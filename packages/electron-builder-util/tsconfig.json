@@ -1,0 +1,20 @@
+{
+  "extends": "../tsconfig-base.json",
+  "compilerOptions": {
+    "outDir": "out"
+  },
+  "declaration": true,
+  "jsdoc": "../../jsdoc/out/util",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "files": [
+    "../../typings/is-ci.d.ts",
+    "../../typings/stat-mode.d.ts",
+    "../../typings/chalk.d.ts",
+    "../../typings/debug.d.ts",
+    "../../typings/node-emoji.d.ts",
+    "../../typings/pretty-ms.d.ts",
+    "../../typings/ansi-escapes.d.ts"
+  ]
+}

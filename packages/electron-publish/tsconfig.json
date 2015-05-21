@@ -1,0 +1,16 @@
+{
+  "extends": "../tsconfig-base.json",
+  "compilerOptions": {
+    "outDir": "out"
+  },
+  "declaration": true,
+  "jsdoc": "../../jsdoc/out/electron-updater",
+  "include": [
+    "src/**/*.ts"
+  ],
+  "files": [
+    "../../typings/mime.d.ts",
+    "../../typings/debug.d.ts",
+    "../../typings/chalk.d.ts"
+  ]
+}

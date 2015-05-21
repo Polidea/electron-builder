@@ -1,0 +1,13 @@
+{
+  "extends": "../tsconfig-base.json",
+  "compilerOptions": {
+    "outDir": "out"
+  },
+  "declaration": true,
+  "jsdoc": "../../jsdoc/out/builder",
+  "docs": "../../docs/Options.md",
+  "include": [
+    "src/**/*.ts",
+    "../../typings/*.d.ts"
+  ]
+}

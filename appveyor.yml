@@ -1,0 +1,18 @@
+platform:
+  - x64
+
+cache:
+  - node_modules
+  - '%USERPROFILE%\.electron'
+
+environment:
+  TEST_FILES: BuildTest,extraMetadataTest,filesTest,globTest,nsisUpdaterTest,oneClickInstallerTest,installerTest
+
+install:
+  - ps: Install-Product node 6 x64
+  - node ./test/vendor/yarn.js --pure-lockfile
+
+build: off
+
+test_script:
+  - node ./test/vendor/yarn.js test

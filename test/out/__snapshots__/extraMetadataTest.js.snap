@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`extra metadata - override icon 1`] = `"Cannot find specified resource \\"dev.icns\\""`;
+
+exports[`extra metadata - two 1`] = `
+Object {
+  "linux": Array [],
+}
+`;
+
+exports[`extra metadata 1`] = `
+Object {
+  "linux": Array [],
+}
+`;
+
+exports[`extra metadata 2`] = `
+Object {
+  "author": "Foo Bar <foo@example.com>",
+  "description": "Test Application (test quite \\" #378)",
+  "foo": Object {
+    "bar": 12,
+    "existingProp": 22,
+  },
+  "homepage": "http://foo.example.com",
+  "license": "MIT",
+  "name": "TestApp",
+  "private": true,
+  "productName": "Test App ßW",
+  "version": "1.1.0",
+}
+`;

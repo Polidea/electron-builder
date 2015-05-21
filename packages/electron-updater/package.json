@@ -1,0 +1,23 @@
+{
+  "name": "electron-updater",
+  "version": "0.0.0-semantic-release",
+  "description": "Cross platform updater for electron applications",
+  "main": "out/main.js",
+  "author": "Vladimir Krivosheev",
+  "license": "MIT",
+  "repository": "electron-userland/electron-builder",
+  "bugs": "https://github.com/electron-userland/electron-builder/issues",
+  "homepage": "https://github.com/electron-userland/electron-builder",
+  "files": [
+    "out"
+  ],
+  "dependencies": {
+    "bluebird-lst": "^1.0.1",
+    "fs-extra-p": "^4.0.2",
+    "js-yaml": "^3.8.2",
+    "semver": "^5.3.0",
+    "source-map-support": "^0.4.11",
+    "electron-builder-http": "0.0.0-semantic-release"
+  },
+  "typings": "./out/electron-updater.d.ts"
+}

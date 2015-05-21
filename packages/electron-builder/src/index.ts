@@ -1,0 +1,8 @@
+export { Packager, BuildResult } from "./packager"
+export { PackagerOptions, ArtifactCreated, BuildInfo, SourceRepositoryInfo } from "./packagerApi"
+export { getArchSuffix, Platform, Arch, archFromString, Target, DIR_TARGET } from "electron-builder-core"
+export { BuildOptions, build, CliOptions, createTargets } from "./builder"
+export { Metadata, Config, AfterPackContext, Protocol, MetadataDirectories, FileAssociation, PlatformSpecificBuildOptions } from "./metadata"
+export { MacOptions, DmgOptions, MasBuildOptions, MacOsTargetName, PkgOptions, DmgContent, DmgWindow } from "./options/macOptions"
+export { WinBuildOptions, NsisOptions, SquirrelWindowsOptions, AppXOptions, NsisWebOptions } from "./options/winOptions"
+export { LinuxBuildOptions, DebOptions, SnapOptions, AppImageOptions } from "./options/linuxOptions"
