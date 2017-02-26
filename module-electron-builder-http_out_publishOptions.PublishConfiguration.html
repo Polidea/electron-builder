@@ -3,7 +3,7 @@
 <head>
     
     <meta charset="utf-8">
-    <title>Home - electron-builder</title>
+    <title>PublishConfiguration - electron-builder</title>
     
     
     
@@ -35,29 +35,207 @@
 
 <div id="main">
     
+    <h1 class="page-title">PublishConfiguration</h1>
+    
 
     
 
 
 
+
+<section>
+
+<header>
+    
+        <h2>
+            <span class="ancestors"><a href="module-electron-builder-http_out_publishOptions.html">electron-builder-http/out/publishOptions</a>.</span>
+        
+        PublishConfiguration
+        </h2>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+    
+        
+
+<dl class="details">
+
     
 
-
-
-
-
-
-
-
+    
 
     
 
+    
 
-    <section class="readme">
-        <article><p><a href="http://github.com/electron-userland/electron-builder">electron-builder</a> API documentation.</p></article>
-    </section>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</dl>
 
 
+
+    <h5 class="subsection-title">Properties:</h5>
+
+    
+
+<table class="props">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>provider</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The provider, one of <code>github</code>, <code>s3</code>, <code>bintray</code>, <code>generic</code>.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>owner</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>The owner.</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>token</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+|
+
+<span class="param-type">null</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+        
+            <div class="description"><p>Can be specified in the <a href="https://github.com/electron-userland/electron-builder/wiki/Options#configuration-options">config</a> or any platform- or target- specific options.</p>
+<p>If <code>GH_TOKEN</code> is set — defaults to <code>[{provider: &quot;github&quot;}]</code>.
+If <code>BT_TOKEN</code> is set and <code>GH_TOKEN</code> is not set — defaults to <code>[{provider: &quot;bintray&quot;}]</code>.
+If <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code> are set and neither <code>GH_TOKEN</code> and <code>BT_TOKEN</code> are set — defaults to <code>[{provider: &quot;s3&quot;}]</code>.</p>
+<p>Array of option objects. Order is important — first item will be used as a default auto-update server on Windows (NSIS).</p>
+<p>Amazon S3 — <code>https</code> must be used, so, if you use direct Amazon S3 endpoints, format <code>https://s3.amazonaws.com/bucket_name</code> <a href="http://stackoverflow.com/a/11203685/1910191">must be used</a>. And do not forget to make files/directories public.</p></div>
+        
+
+        
+    
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

@@ -23,24 +23,33 @@ img {
   max-width: 100%;
 }
 
-a,
-a:active {
-  color: #323a4d;
+a {
+  color: #4078c0;
   text-decoration: none;
 }
 
 a:hover {
-  color: #00e2ff;
-  text-decoration: none;
+  text-decoration: underline;
 }
 
-article a {
-  border-bottom: 1px solid #ddd;
-}
+/*a,*/
+/*a:active {*/
+  /*color: #323a4d;*/
+  /*text-decoration: none;*/
+/*}*/
 
-article a:hover, article a:active {
-  border-bottom-color: #222;
-}
+/*a:hover {*/
+  /*color: #00e2ff;*/
+  /*text-decoration: none;*/
+/*}*/
+
+/*article a {*/
+  /*border-bottom: 1px solid #ddd;*/
+/*}*/
+
+/*article a:hover, article a:active {*/
+  /*border-bottom-color: #222;*/
+/*}*/
 
 p, ul, ol, blockquote {
   margin-bottom: 1em;
