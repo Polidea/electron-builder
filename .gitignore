@@ -4,8 +4,6 @@ node_modules/
 #**/out/**/*
 #!**/*js.snap
 
-dist/
-
 /.idea/compiler.xml
 /.idea/encodings.xml
 /.idea/workspace.xml
@@ -17,8 +15,6 @@ dist/
 
 .DS_Store
 
-/packages/*/out/
-/out/
 # to not exclude .js.snap (jest snapshots)
 /test/out/**/*.js
 /test/out/**/*.map

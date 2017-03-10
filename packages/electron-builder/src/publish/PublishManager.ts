@@ -320,7 +320,7 @@ export function computeDownloadUrl(publishConfig: PublishConfiguration, fileName
 
   let baseUrl
   if (publishConfig.provider === "s3") {
-    baseUrl = s3Url((<S3Options>publishConfig))
+    baseUrl = packager.expandMacro(s3Url((<S3Options>publishConfig)), arch)
   }
   else {
     const gh = <GithubOptions>publishConfig
