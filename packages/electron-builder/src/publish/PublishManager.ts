@@ -380,7 +380,33 @@ export async function getPublishConfigs(packager: PlatformPackager<any>, targetS
   }
 
   debug(`Explicit publish provider: ${JSON.stringify(publishers, null, 2)}`)
-  return await <Promise<Array<PublishConfiguration>>>BluebirdPromise.map(asArray(publishers), it => getResolvedPublishConfig(packager.info, typeof it === "string" ? {provider: it} : it))
+  return await (<Promise<Array<PublishConfiguration>>>BluebirdPromise.map(asArray(publishers), it => getResolvedPublishConfig(packager.info, typeof it === "string" ? {provider: it} : it)))
+    .then(publishConfigs => expandPublishConfigs(packager, publishConfigs))
+}
+
+function expandPublishConfigs(packager: PlatformPackager<any>, publishConfigs: Array<PublishConfiguration>) {
+  return publishConfigs.map(publishConfig => expandPublishConfig(packager, publishConfig))
+}
+
+function expandPublishConfig(packager: PlatformPackager<any>, publishConfig: PublishConfiguration) {
+  if ((<S3Options>publishConfig).bucket != null) {
+    publishConfig = Object.assign({}, publishConfig, {
+        bucket: packager.expandMacro((<S3Options>publishConfig).bucket, null)
+    })
+  }
+  if ((<S3Options>publishConfig).path != null) {
+    const unexpandedPath = (<S3Options>publishConfig).path
+    publishConfig = Object.assign({}, publishConfig, {
+        path: unexpandedPath ? packager.expandMacro(unexpandedPath, null) : unexpandedPath
+    })
+  }
+  if ((<S3Options>publishConfig).channel != null) {
+    const unexpandedChannel = (<S3Options>publishConfig).channel
+    publishConfig = Object.assign({}, publishConfig, {
+        path: unexpandedChannel ? packager.expandMacro(unexpandedChannel, null) : unexpandedChannel
+    })
+  }
+  return publishConfig
 }
 
 function sha256(file: string) {
