@@ -231,6 +231,7 @@ async function writeUpdateInfo(event: ArtifactCreated, _publishConfigs: Array<Pu
       await (<any>outputJson)(updateInfoFile, <VersionInfo>{
         version: version,
         releaseDate: new Date().toISOString(),
+        releaseNotes: packager.appInfo.releaseNotes,
         url: computeDownloadUrl(publishConfig, packager.generateName2("zip", "mac", isGitHub), packager),
       }, {spaces: 2})
 
@@ -298,7 +299,7 @@ export function createPublisher(context: PublishContext, version: string, publis
 
     case "bintray":
       return new BintrayPublisher(context, publishConfig, version, options)
-    
+
     case "generic":
       return null
 
@@ -441,7 +442,7 @@ function expandPublishConfig(options: any, packager: PlatformPackager<any>, arch
 async function getResolvedPublishConfig(packager: PlatformPackager<any>, options: PublishConfiguration, arch: Arch | null, errorIfCannot: boolean = true): Promise<PublishConfiguration | null> {
   options = Object.assign(Object.create(null), options)
   expandPublishConfig(options, packager, arch)
-  
+
   const provider = options.provider
   if (provider === "generic") {
     if ((<GenericServerOptions>options).url == null) {
@@ -455,12 +456,12 @@ async function getResolvedPublishConfig(packager: PlatformPackager<any>, options
     await providerClass.checkAndResolveOptions(options)
     return options
   }
-  
+
   const isGithub = provider === "github"
   if (!isGithub && provider !== "bintray") {
     return options
   }
-  
+
   let owner = options.owner
   let project = isGithub ? (<GithubOptions>options).repo : (<BintrayOptions>options).package
 
@@ -472,7 +473,7 @@ async function getResolvedPublishConfig(packager: PlatformPackager<any>, options
       owner = repo.substring(index + 1)
     }
   }
-  
+
   async function getInfo() {
     const info = await packager.info.repositoryInfo
     if (info != null) {

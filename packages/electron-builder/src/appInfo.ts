@@ -14,6 +14,8 @@ export class AppInfo {
   readonly productName: string
   readonly productFilename: string
 
+  readonly releaseNotes?: string | null
+
   private get config(): Config {
     return this.info.config
   }
@@ -36,6 +38,10 @@ export class AppInfo {
 
     this.productName = this.config.productName || metadata.productName || metadata.name!
     this.productFilename = sanitizeFileName(this.productName)
+
+    if (metadata.releaseNotes) {
+      this.releaseNotes = metadata.releaseNotes
+    }
   }
 
   get versionInWeirdWindowsForm(): string {

@@ -35,7 +35,7 @@ export interface Metadata {
 
   /**
    * The url to the project [homepage](https://docs.npmjs.com/files/package.json#homepage) (NuGet Package `projectUrl` (optional) or Linux Package URL (required)).
-   * 
+   *
    * If not specified and your project repository is public on GitHub, it will be `https://github.com/${user}/${project}` by default.
    */
   readonly homepage?: string | null
@@ -46,6 +46,8 @@ export interface Metadata {
   readonly license?: string | null
 
   readonly build?: Config
+
+  readonly releaseNotes?: string | null
 }
 
 /**
@@ -55,7 +57,7 @@ export interface Config extends PlatformSpecificBuildOptions {
   /**
    * The application id. Used as [CFBundleIdentifier](https://developer.apple.com/library/ios/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html#//apple_ref/doc/uid/20001431-102070) for MacOS and as
    * [Application User Model ID](https://msdn.microsoft.com/en-us/library/windows/desktop/dd378459(v=vs.85).aspx) for Windows (NSIS target only, Squirrel.Windows not supported).
-   * 
+   *
    * Defaults to `com.electron.${name}`. It is strongly recommended that an explicit ID be set.
    */
   readonly appId?: string | null
@@ -64,7 +66,7 @@ export interface Config extends PlatformSpecificBuildOptions {
    * The human-readable copyright line for the app. Defaults to `Copyright © year author`.
    */
   readonly copyright?: string | null
-  
+
   /**
    * As [name](#AppMetadata-name), but allows you to specify a product name for your executable which contains spaces and other special characters not allowed in the [name property](https://docs.npmjs.com/files/package.json#name}).
    */
@@ -90,7 +92,7 @@ export interface Config extends PlatformSpecificBuildOptions {
 
   /**
    * Whether to package the application's source code into an archive, using [Electron's archive format](http://electron.atom.io/docs/tutorial/application-packaging/).
-   * 
+   *
    * Node modules, that must be unpacked, will be detected automatically, you don't need to explicitly set [asarUnpack](#Config-asarUnpack) - please file issue if this doesn't work.
    * @default true
   */
@@ -110,7 +112,7 @@ export interface Config extends PlatformSpecificBuildOptions {
    * URL protocol schemes.
    */
   readonly protocols?: Array<Protocol> | Protocol
-  
+
   /**
    * The compression level. If you want to rapidly test build, `store` can reduce build time significantly.
    * @default normal
@@ -159,7 +161,7 @@ export interface Config extends PlatformSpecificBuildOptions {
    * The [electron-download](https://github.com/electron-userland/electron-download#usage) options.
    */
   readonly electronDownload?: any
-  
+
   /**
    * Array of option objects. Order is important — first item will be used as a default auto-update server on Windows (NSIS).
    * @see [Publish options](https://github.com/electron-userland/electron-builder/wiki/Publishing-Artifacts#publish-options).
@@ -178,7 +180,7 @@ export interface Config extends PlatformSpecificBuildOptions {
    * The version of electron you are packaging for. Defaults to version of `electron`, `electron-prebuilt` or `electron-prebuilt-compile` dependency.
    */
   readonly electronVersion?: string | null
-  
+
   /**
    * The version of muon you are packaging for.
    */
@@ -186,7 +188,7 @@ export interface Config extends PlatformSpecificBuildOptions {
 
   /**
    * The [artifact file name pattern](https://github.com/electron-userland/electron-builder/wiki/Options#artifact-file-name-pattern). Defaults to `${productName}-${version}.${ext}` (some target can have another defaults, see corresponding options).
-   * 
+   *
    * Currently supported only for `mas`, `pkg`, `dmg` and `nsis`.
    */
   readonly artifactName?: string | null
@@ -196,12 +198,12 @@ export interface Config extends PlatformSpecificBuildOptions {
    * If `TRAVIS_BUILD_NUMBER` or `APPVEYOR_BUILD_NUMBER` or `CIRCLE_BUILD_NUM` or `BUILD_NUMBER` or `bamboo.buildNumber` env defined, it will be used as a build version (`version.build_number`).
    */
   readonly buildVersion?: string | null
-  
+
   /**
    * Whether to use [electron-compile](http://github.com/electron/electron-compile) to compile app. Defaults to `true` if `electron-compile` in the dependencies. And `false` if in the `devDependencies` or doesn't specified.
    */
   readonly electronCompile?: boolean
-  
+
   readonly mac?: MacOptions | null
   readonly mas?: MasBuildOptions | null
   readonly dmg?: DmgOptions | null
@@ -223,7 +225,7 @@ export interface Config extends PlatformSpecificBuildOptions {
   readonly freebsd?: LinuxBuildOptions | null
   readonly p5p?: LinuxBuildOptions | null
   readonly apk?: LinuxBuildOptions | null
-  
+
   /**
    * @private
    */
