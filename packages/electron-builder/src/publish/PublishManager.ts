@@ -225,13 +225,14 @@ async function writeUpdateInfo(event: ArtifactCreated, _publishConfigs: Array<Pu
     }
 
     const version = packager.appInfo.version
+    const releaseNotes = packager.appInfo.releaseNotes
     const channel = (<GenericServerOptions>publishConfig).channel || "latest"
     if (packager.platform === Platform.MAC) {
       const updateInfoFile = isGitHub ? path.join(outDir, "github", `${channel}-mac.json`) : path.join(outDir, `${channel}-mac.json`)
       await (<any>outputJson)(updateInfoFile, <VersionInfo>{
         version: version,
         releaseDate: new Date().toISOString(),
-        releaseNotes: packager.appInfo.releaseNotes,
+        releaseNotes: releaseNotes,
         url: computeDownloadUrl(publishConfig, packager.generateName2("zip", "mac", isGitHub), packager),
       }, {spaces: 2})
 
@@ -244,19 +245,20 @@ async function writeUpdateInfo(event: ArtifactCreated, _publishConfigs: Array<Pu
       })
     }
     else {
-      await writeWindowsUpdateInfo(event, version, outDir, channel, publishConfigs)
+      await writeWindowsUpdateInfo(event, version, outDir, channel, publishConfigs, releaseNotes)
       break
     }
   }
 }
 
-async function writeWindowsUpdateInfo(event: ArtifactCreated, version: string, outDir: any, channel: string, publishConfigs: Array<PublishConfiguration>): Promise<void> {
+async function writeWindowsUpdateInfo(event: ArtifactCreated, version: string, outDir: any, channel: string, publishConfigs: Array<PublishConfiguration>, releaseNotes?: string | null): Promise<void> {
   const packager = event.packager
   const sha2 = await sha256(event.file!)
   const updateInfoFile = path.join(outDir, `${channel}.yml`)
   await writeFile(updateInfoFile, safeDump(<UpdateInfo>{
     version: version,
     releaseDate: new Date().toISOString(),
+    releaseNotes: releaseNotes,
     githubArtifactName: event.safeArtifactName,
     path: path.basename(event.file!),
     sha2: sha2,
